@@ -1,24 +1,22 @@
+// src/App.jsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { CartProvider } from "./context/CartContext";
-import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import Shop from "./pages/Shop";
-import Cart from "./pages/Cart";
-import "./App.css";
+import NavBar from "./components/navBar.jsx";
+import Home from "./pages/home.jsx";
+import Shop from "./pages/shop.jsx";
+import Cart from "./pages/cart.jsx";
 
-function App() {
+export default function App() {
   return (
-    <CartProvider>
-      <Router>
-        <Navbar />
+    <Router>
+      <NavBar />
+      <div style={{ padding: "2rem" }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
-      </Router>
-    </CartProvider>
+      </div>
+    </Router>
   );
 }
 
-export default App;

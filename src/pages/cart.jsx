@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { CartContext } from "../context/CartContext";
-import CartItem from "../components/CartItem";
-
-function Cart() {}
+// src/pages/Cart.jsx
+export default function Cart() {
+    return <h1>Tu carrito</h1>;
+  }
+  

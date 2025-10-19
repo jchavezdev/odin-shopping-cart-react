@@ -1,4 +1,5 @@
-import useFetch from "../hooks/useFetch";
-import ProductCard from "../components/ProductCard";
-
-function Shop() {}
+// src/pages/Shop.jsx
+export default function Shop() {
+    return <h1>Catálogo de productos</h1>;
+  }
+  
