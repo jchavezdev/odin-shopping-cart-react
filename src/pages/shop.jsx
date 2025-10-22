@@ -1,5 +1,17 @@
-// src/pages/Shop.jsx
+import ProductCard from "../components/ProductCard.jsx"; 
+import { useState } from "react";
+
 export default function Shop() {
-    return <h1>Catálogo de productos</h1>;
-  }
-  
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (product) => {
+    setCart((prev) => [...prev, product]);
+  };
+
+  return (
+    <div>
+      <h1>Shop</h1>
+      <ProductCard addToCart={addToCart} />
+    </div>
+  );
+}
