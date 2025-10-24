@@ -1,17 +1,13 @@
-import ProductCard from "../components/ProductCard.jsx"; 
-import { useState } from "react";
+// pages/Shop.jsx
+import ProductCard from "../components/ProductCard";
 
-export default function Shop() {
-  const [cart, setCart] = useState([]);
-
-  const addToCart = (product) => {
-    setCart((prev) => [...prev, product]);
-  };
-
+export default function Shop({ addToCart }) {
+  
   return (
     <div>
-      <h1>Shop</h1>
-      <ProductCard addToCart={addToCart} />
+        <h1>Shop</h1>
+        {/* La prop ya está siendo pasada correctamente */}
+        <ProductCard addToCart={addToCart} />
     </div>
-  );
+);
 }
