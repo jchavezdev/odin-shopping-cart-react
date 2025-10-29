@@ -1,11 +1,24 @@
-// ItemCounter.jsx
+//itemCounter
 import { useState } from "react";
 
-export function ItemCounter() {
+export function ItemCounter({ onChangeAmount }) {
   const [amount, setAmount] = useState(1);
 
-  const addItem = () => setAmount(amount + 1);
-  const quitItem = () => amount > 1 && setAmount(amount - 1);
+  const addItem = () => {
+    setAmount(prev => {
+      const newValue = prev + 1;
+      onChangeAmount?.(newValue);
+      return newValue;
+    });
+  };
+
+  const quitItem = () => {
+    setAmount(prev => {
+      const newValue = prev > 1 ? prev - 1 : 1;
+      onChangeAmount?.(newValue);
+      return newValue;
+    });
+  };
 
   return (
     <div className="contador">
@@ -15,4 +28,5 @@ export function ItemCounter() {
     </div>
   );
 }
+
 

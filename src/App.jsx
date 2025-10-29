@@ -4,16 +4,32 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "./components/navBar.jsx";
 import Home from "./pages/home.jsx";
 import Shop from "./pages/shop.jsx";
-import Cart from "./pages/cart.jsx"; // Asegúrate de que este componente exista
+import Cart from "./pages/cart.jsx";
 
 export default function App() {
     // Define Cart State
     const [cart, setCart] = useState([]);
 
     // Define AddToCart function
-    const addToCart = (product) => {
-        setCart(prev => [...prev, product]);
-    };
+    const addToCart = (product, quantity) => {
+        setCart(prev => {
+          // Verify if a product exists
+          const existing = prev.find(item => item.id === product.id);
+      
+          if (existing) {
+            // If it already exists, increase the product
+            return prev.map(item =>
+              item.id === product.id
+                ? { ...item, quantity: item.quantity + quantity }
+                : item
+            );
+          } else {
+            // If not, adds the quantity
+            return [...prev, { ...product, quantity }];
+          }
+        });
+      };
+      
 
     // Calculates how many articles are in the cart
     const totalItems = cart.length; 
